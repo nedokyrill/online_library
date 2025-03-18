@@ -13,10 +13,12 @@ func Run() {
 		log.Fatal("Error loading .env file")
 	}
 
-	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	_, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		log.Fatal("Error with connection to database: ", err)
 	}
 	log.Println("Connected to database successfully")
 
+	server := NewServer(os.Getenv("ADDR"), router)
+	server.Start()
 }
