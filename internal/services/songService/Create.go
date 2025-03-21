@@ -21,6 +21,17 @@ func NewSongService(songRepo repository.SongRepository) *SongService {
 	return &SongService{songRepo: songRepo}
 }
 
+// @BasePath /api/v1
+
+// @Summary Create song
+// @Description Создание песни
+// @Tags Song
+// @Accept  json
+// @Produce  json
+// @Param body body song.Song  true  "Данные для создания песни"
+// @Success 201 {string} string ""
+// @Failure 400 {string} string ""
+// @Router /song/create [post]
 func (s *SongService) CreateSong(c *gin.Context) {
 	var payload song.Song
 

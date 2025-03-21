@@ -1,8 +1,8 @@
-build: #gen-swag
+build: gen-swag
 	@go build -o bin/online_library cmd/app/main.go
 
-#gen-swag:
-#	@swag init -g ./cmd/app/main.go -o cmd/app/docs
+gen-swag:
+	@swag init -g ./cmd/app/main.go
 
 run:build
 	@./bin/online_library

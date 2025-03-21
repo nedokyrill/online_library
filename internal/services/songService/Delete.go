@@ -6,6 +6,17 @@ import (
 	"net/http"
 )
 
+// @BasePath /api/v1
+
+// @Summary Delete song
+// @Description Удаление песни
+// @Tags Song
+// @Accept  json
+// @Produce  json
+// @Param id path int true "ID песни"
+// @Success 201 {string} string ""
+// @Failure 400 {string} string ""
+// @Router /song/{id}/delete [delete]
 func (s *SongService) Delete(c *gin.Context) {
 	id := Utils.GetIDFromContext(c)
 

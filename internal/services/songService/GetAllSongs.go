@@ -8,6 +8,24 @@ import (
 	"strconv"
 )
 
+// @BasePath /api/v1
+
+// @Summary Get All Songs
+// @Description Просмотреть все песни
+// @Tags Song
+// @Accept  json
+// @Produce  json
+// @Param limit query int false "limit"
+// @Param offset query int false "offset"
+// @Param id query int false "Фильтр по Id"
+// @Param group query string false "Фильтр по Group"
+// @Param song query string false "Фильтр по Song"
+// @Param release_date query string false "Фильтр по ReleaseDate"
+// @Param text query string false "Фильтр по Text"
+// @Param link query string false "Фильтр по Link"
+// @Success 201 {string} string ""
+// @Failure 400 {string} string ""
+// @Router /song/search-all [get]
 func (s *SongService) GetAllSongs(c *gin.Context) {
 	limitStr := c.DefaultQuery("limit", "10")
 	offsetStr := c.DefaultQuery("offset", "0")

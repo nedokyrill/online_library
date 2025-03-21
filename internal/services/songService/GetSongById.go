@@ -9,6 +9,17 @@ import (
 	"strings"
 )
 
+// @BasePath /api/v1
+
+// @Summary Get song
+// @Description Просмотреть песни по id
+// @Tags Song
+// @Accept  json
+// @Produce  json
+// @Param id path int true "ID песни"
+// @Success 201 {string} string ""
+// @Failure 400 {string} string ""
+// @Router /song/{id}/ [get]
 func (s *SongService) GetSongById(c *gin.Context) {
 	id := Utils.GetIDFromContext(c)
 	log.Println("1")

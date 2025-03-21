@@ -6,11 +6,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
+	"github.com/nedokyrill/online_library/docs"
 	"github.com/nedokyrill/online_library/internal/handlers/songHandler"
 	"github.com/nedokyrill/online_library/internal/repository/songRepository"
 	"github.com/nedokyrill/online_library/internal/services/songService"
 	Utils "github.com/nedokyrill/online_library/pkg/utils"
-
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"log"
 	"os"
 )
@@ -44,9 +46,9 @@ func Run() {
 	router := gin.Default()
 	api := router.Group("/api/v1/")
 
-	////swagger
-	//router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	//docs.SwaggerInfo.BasePath = "/api/v1"
+	//swagger
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	docs.SwaggerInfo.BasePath = "/api/v1"
 
 	//REGISTER_ROUTES
 	songHand.RegisterRoutes(api)

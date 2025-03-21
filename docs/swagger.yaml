@@ -1,0 +1,182 @@
+definitions:
+  song.Song:
+    properties:
+      group:
+        type: string
+      id:
+        type: integer
+      link:
+        type: string
+      releaseDate:
+        type: string
+      song:
+        type: string
+      text:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is a sample server celler server.
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /song/{id}/:
+    get:
+      consumes:
+      - application/json
+      description: Просмотреть песни по id
+      parameters:
+      - description: ID песни
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get song
+      tags:
+      - Song
+  /song/{id}/delete:
+    delete:
+      consumes:
+      - application/json
+      description: Удаление песни
+      parameters:
+      - description: ID песни
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Delete song
+      tags:
+      - Song
+  /song/{id}/update:
+    patch:
+      consumes:
+      - application/json
+      description: Обновление данных песни
+      parameters:
+      - description: ID песни
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Данные для обновления песни
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/song.Song'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Update song
+      tags:
+      - Song
+  /song/create:
+    post:
+      consumes:
+      - application/json
+      description: Создание песни
+      parameters:
+      - description: Данные для создания песни
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/song.Song'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Create song
+      tags:
+      - Song
+  /song/search-all:
+    get:
+      consumes:
+      - application/json
+      description: Просмотреть все песни
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        type: integer
+      - description: Фильтр по Id
+        in: query
+        name: id
+        type: integer
+      - description: Фильтр по Group
+        in: query
+        name: group
+        type: string
+      - description: Фильтр по Song
+        in: query
+        name: song
+        type: string
+      - description: Фильтр по ReleaseDate
+        in: query
+        name: release_date
+        type: string
+      - description: Фильтр по Text
+        in: query
+        name: text
+        type: string
+      - description: Фильтр по Link
+        in: query
+        name: link
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Get All Songs
+      tags:
+      - Song
+swagger: "2.0"

@@ -10,12 +10,13 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary update song
+// @Summary Update song
 // @Description Обновление данных песни
 // @Tags Song
 // @Accept  json
 // @Produce  json
 // @Param id path int true "ID песни"
+// @Param body body song.Song  true  "Данные для обновления песни"
 // @Success 201 {string} string ""
 // @Failure 400 {string} string ""
 // @Router /song/{id}/update [patch]
