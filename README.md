@@ -21,7 +21,3 @@ Test task implementing an online music library.
 ---
 ## migration down
 ### `make migrate-down`
-
----
-## see jwt secret
-### `make jwt_secret`
